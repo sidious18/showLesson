@@ -31,9 +31,9 @@ var jsFilesToInject = [
 
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/angular.min.js',
+  'js/dependencies/angular-route.min.js',
   'js/dependencies/jquery.min.js',
   'js/dependencies/**/*.js',
-  'js/bower_components/ng-file-upload/ng-file-upload.min.js',
   'js/libs/*.js',
   'js/scripts/map.js',
   'js/scripts/sockets.js',
