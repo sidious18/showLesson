@@ -31,7 +31,6 @@ var jsFilesToInject = [
 
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',
-  'js/bower_components/angular/angular.min.js',
   'js/bower_components/angular-route/angular-route.min.js',
   'js/bower_components/ng-file-upload/ng-file-upload.min.js',
   'js/bower_components/jquery/dist/jquery.min.js',
