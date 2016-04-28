@@ -30,11 +30,10 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
+  'js/dependencies/angular.min.js',
+  'js/dependencies/jquery.min.js',
   'js/dependencies/**/*.js',
-  'js/bower_components/angular-route/angular-route.min.js',
   'js/bower_components/ng-file-upload/ng-file-upload.min.js',
-  'js/bower_components/jquery/dist/jquery.min.js',
-  'js/bower_components/bootstrap/dist/js/bootstrap.min.js',
   'js/libs/*.js',
   'js/scripts/map.js',
   'js/scripts/sockets.js',
