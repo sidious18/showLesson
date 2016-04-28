@@ -30,7 +30,7 @@ bezoMainMap.directive('stopEvent', function () {
     };
  });
 
-bezoMainMap.controller('bezoMarkerShow',function($scope,$http,$compile,$routeParams){
+bezoMainMap.controller('bezoMarkerShow',['$scope', '$http', '$compile', '$routeParams', function($scope,$http,$compile,$routeParams){
 	$scope.loadJson = function(){
 		i=1;
 		createdLast=false;
@@ -121,11 +121,11 @@ bezoMainMap.controller('bezoMarkerShow',function($scope,$http,$compile,$routePar
 			$(".carousel li:nth-child("+i+")").addClass("active");
 		}		
 	}
-});
+}]);
 
 
 var availableTags = new Array();
-bezoMainMap.controller('bezoMarkerSet',function($scope,$http){
+bezoMainMap.controller('bezoMarkerSet',["$scope", "$http", function($scope,$http){
 	$scope.orderer="markerTitle";
 	$scope.newsOrder = function(orderer){
 		$scope.orderer = orderer;
@@ -219,7 +219,7 @@ bezoMainMap.controller('bezoMarkerSet',function($scope,$http){
 		});
 	}
 	getMarkers($scope.markers);*/
-});
+}]);
 bezoMainMap.controller('bezoMarkerWrite', ['$scope','$http', 'Upload', function ($scope, $http, Upload) {
     $scope.selectFiles = function(files) {
         $scope.files = files;
