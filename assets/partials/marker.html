@@ -1,0 +1,37 @@
+<div class="modal fade" id="marker-holder" data-ng-controller="bezoMarkerShow" data-ng-click="clearList() ;$event.stopPropagation();"  ng-init="loadJson()">
+	<div class="modal-dialog marker-box">
+		<h3 class="send-marker-title">{{markerTitle}}</h3>
+		<div class="send-marker-content">
+			<div class="row">
+				<div class="col-sm-12">
+					{{markerPlace}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="marker-date">
+						{{markerDate}}
+					</div>  
+					<div>{{markerCoordX}} {{markerCoordY}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="send-marker-content">
+			{{markerDescription}}
+		</div>
+		<div id="marker-slider" class="carousel slide" data-ride="carousel" data-interval="false">
+		  <div class="carousel-inner carousel">
+		      <div ng-repeat="image in pictureList track by $index" class="item" ng-class='{active:$first}'><span><img ng-src="{{image}}"></span>
+		    </div>
+		  </div>
+		  <span class="left carousel-control" href="#myCarousel" ng-click="nextImage()">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </span>
+		  <span class="right carousel-control" href="#myCarousel" ng-click="nextImage()">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </span>
+		</div>
+	</div>
+</div>

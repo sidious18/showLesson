@@ -1,0 +1,17 @@
+{
+  "name": "js",
+  "authors": [
+    "sidious18 <max_leb@mail.ru>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

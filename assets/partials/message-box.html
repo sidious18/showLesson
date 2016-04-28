@@ -1,0 +1,26 @@
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$("#messages").modal();
+		$('#messages').on('hidden.bs.modal', function () {
+		    document.location = "/#";
+		})
+	});
+</script>
+
+<div ng-controller="bezoSendMessage" ng-init="getMessages()" ng-click="cancel()" id="messages" class="modal fade" role="dialog">
+	<div class="messages modal-dialog" stop-event>
+		<div class="messages-box" scroll-glue>
+				<div ng-repeat="message in messages track by $index">
+					<p class="message-author">{{message.author}}:</p>
+					<p class="message-text">{{message.text}}</p>
+				</div>
+			</div>
+		<div class="messages-control">
+			<div><input type="text" class="author-name" placeholder="Автор"></div>
+			<div>
+				<textarea class="author-message" placeholder="Сообщение"></textarea>
+				<input type="button" value="Отправить"ng-click="sendMessage()" class="send-message">
+			</div>
+		</div>
+	</div>
+</div>

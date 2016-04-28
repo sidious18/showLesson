@@ -1,0 +1,54 @@
+<script type="text/javascript" src="js/exif-reader.js"></script>
+
+	<div class="send-marker-holder marker-modal" data-ng-controller="bezoMarkerWrite">
+		<div class="marker-top">
+			<div class="marker-type">
+			</div>
+			<div class="marker-title">
+				<h3 class="send-marker-title">Заполните содержимое маркера</h3>
+			</div>
+			<div class="marker-close">
+				<img src="/img/marker-types/close.png" alt="Crash" class="close-marker-send">
+			</div>
+		</div>
+		<div class="marker-title-input">
+		<select name="speed" class="choose-type">
+			<option name="event" disabled>Введите тип маркера</option>
+			<option name="event" selected="selected">Событие</option>
+		    <option name="crash">Происшествие</option>
+		    <option name="memory">Воспоминание</option>
+		</select>
+			<input type="text" class="title-input" placeholder="Введите заголовок маркера">
+		</div>
+		<div class="marker-place">
+			<input type="text" class="place-input" placeholder="Здесь будет местопложение маркера" disabled>
+		</div>
+		<div class="marker-xcoord">
+			<input type="text" class="xcoord-input" placeholder="Широта" disabled>
+		</div>
+		<div class="marker-ycoord">
+			<input type="text" class="ycoord-input" placeholder="Долгота" disabled>
+		</div>
+		<div class="marker-file">
+			<div>
+				<p>Загрузите фотографии</p>
+				<input id="file" type="file" ngf-select="selectFiles($files, $invalidFiles)" multiple accept="image/*" ngf-max-size="3MB" class="pictures-input">
+			</div>
+			<div>		
+				<p>Дата фотографии:</p>		
+				<input type="text" class="year">
+				<input type="text" class="month">
+				<input type="text" class="day">
+				<input type="text" class="hour">
+				<input type="text" class="minute">
+				<input type="text" class="second">
+			</div>
+		</div>
+		<div class="marker-description">
+			<textarea class="description-input" placeholder="Введите описание маркера"></textarea>
+		</div>
+		<div class="marker-buttons">
+			<input class="send-info" type="button" value="Отправить" ng-click="uploadFiles()">
+			<input class="cancel-info" type="button"value="Отмена">
+		</div>
+	</div>

@@ -1,0 +1,100 @@
+<div ng-app="bezoMainMap">
+  <div ng-view></div>
+  <div id="sort-marker" class="modal fade" role="dialog">
+    <div class="sort-marker modal-dialog"></div>
+  </div>
+  <div data-ng-controller="bezoMarkerSet">
+    <div id="fresh-news" class="modal fade" role="dialog">
+      <div class="fresh-news modal-dialog"></div>
+    </div>
+    <div class="google-map-container">
+      <nav class="navbar navbar-default bezo-map-navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav menu">
+            <li data-toggle="modal" data-target="#sort-marker"><a href="">Настройки</a></li>
+            <li data-toggle="modal" data-target="#fresh-news"><a href="">Лента новостей</a></li>
+            <li data-target="#message-box"><a href="#/messages">Чат</a></li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+      <div id="googleMap"></div>
+    </div>  
+  </div>
+  <div id="send-marker" class="modal fade" data-ng-controller="bezoMarkerWrite" role="dialog">
+    <div class="modal-dialog send-marker-box">  
+      <h3 class="send-marker-title">Заполните содержимое маркера</h3>
+      <div class="send-marker-content">
+        <div class="row">
+          <div class="marker-title-input col-sm-3">
+            <select name="speed" class="choose-type">
+              <option name="event">Событие</option>
+                <option name="crash">Происшествие</option>
+                <option name="memory">Воспоминание</option>
+            </select>         
+          </div>
+          <div class="col-sm-9">
+            <input type="text" class="title-input" placeholder="Введите заголовок маркера">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <p>Загрузите фотографии</p>
+            <input id="file" type="file" ngf-select="selectFiles($files, $invalidFiles)" multiple accept="image/*" ngf-max-size="3MB" class="pictures-input" name="files">
+          </div>
+          <div class="col-sm-8 search-marker-box">    
+            <p>Дата фотографии:</p> 
+            <div class="col-xs-2">  
+              <input type="text" class="year">
+            </div>
+            <div class="col-xs-2">  
+              <input type="text" class="month">
+            </div>
+            <div class="col-xs-2">  
+              <input type="text" class="day">
+            </div>
+            <div class="col-xs-2">  
+              <input type="text" class="hour">
+            </div>
+            <div class="col-xs-2">  
+              <input type="text" class="minute">
+            </div>
+            <div class="col-xs-2">  
+              <input type="text" class="second">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="marker-description">
+        <textarea class="description-input" placeholder="Введите описание маркера"></textarea>
+      </div>
+      <div class="send-marker-content">
+        <div class="marker-place">
+          <textarea type="text" class="place-input" placeholder="Здесь будет местоположение маркера" disabled></textarea>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <input type="text" class="xcoord-input" placeholder="Широта" disabled>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="ycoord-input" placeholder="Долгота" disabled>
+          </div>
+        </div>
+      </div>
+      
+      <input class="send-info btn btn-success" type="button" value="Отправить" ng-click="uploadFiles()">
+      <input class="cancel-info btn btn-danger" type="button"value="Отмена">
+    </div>
+  </div>
+</div>
