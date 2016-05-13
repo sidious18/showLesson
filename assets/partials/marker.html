@@ -21,7 +21,7 @@
 		</div>
 		<div id="marker-slider" class="carousel slide" data-ride="carousel" data-interval="false">
 		  <div class="carousel-inner carousel">
-		      <div ng-repeat="image in pictureList track by $index" class="item" ng-class='{active:$first}'><span><img ng-src="{{image}}"></span>
+		      <div ng-repeat="image in pictureList track by $index" class="item" ng-class='{active:$first}'><span><img ng-src="{{image}}" imageonload></span>
 		    </div>
 		  </div>
 		  <span class="left carousel-control" href="#myCarousel" ng-click="nextImage()">

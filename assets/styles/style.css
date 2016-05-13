@@ -135,25 +135,12 @@
 	position: fixed;
 	height:100%;
 }
-.show-select
-{
-    
-}
-.date-select
-{
-	
-}
 .search-date-input
 {
 	font-size: 12px;
 }
-
-.search-buttons{
-    
-}
 .autocompliete
 {
-
     font-size:12px;
 }
 .ui-autocomplete
@@ -360,4 +347,9 @@
 	width:100%;
 	z-index: 3;
 	margin-bottom:0px;
+}
+.uploading{
+	display: block;
+	background:url(../images/uploading.gif) no-repeat;
+	background-position: center;
 }

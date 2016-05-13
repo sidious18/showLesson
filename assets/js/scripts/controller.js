@@ -29,24 +29,29 @@ bezoMainMap.directive('stopEvent', function () {
         }
     };
  });
-
+bezoMainMap.directive('imageonload', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+        	var ifFirst = true;
+            element.bind('load', function() {
+                element.parent().removeClass('uploading')
+                element.css('visibility', 'visible');
+            });
+            element.bind('error', function(){
+            	element.parent().attr("class", "uploading");
+            	element.css('visibility', 'hidden');
+                setTimeout(function(){
+                	attrs.$set('src', attrs.ngSrc);
+        		}, 2000);
+            });
+        }
+    };
+});
 bezoMainMap.controller('bezoMarkerShow',['$scope', '$http', '$compile', '$routeParams', function($scope,$http,$compile,$routeParams){
 	$scope.loadJson = function(){
 		i=1;
 		createdLast=false;
-		/*$http.get('/json/markers/'+$routeParams.markerId+'.json').success(function(data){
-			$scope.markerData = data;
-			$scope.pictureList = new Array($scope.markerData.img.length);
-			$scope.pictureList[0] = $scope.markerData.img[0];
-			$scope.markerTitle = data.markerTitle;
-			$scope.markerPlace = data.markerPlace;
-			$scope.markerCoordX = data.markerXcoord;
-			$scope.markerCoordY = data.markerYcoord;
-			$scope.markerDescription = data.markerDescription;
-			$scope.markerType = data.markerType;
-			$scope.markerDate = data.markerDate;
-            $scope.markerID = data.markerID;
-		});*/
 		$("#marker-holder").modal('show');
 		$('#marker-holder').on('hidden.bs.modal', function () {
 		    document.location = "/#";
@@ -262,21 +267,7 @@ bezoMainMap.controller('bezoMarkerWrite', ['$scope','$http', 'Upload', function 
 					type:$(".choose-type").find('option:selected').attr("name"),
 					files: $scope.files
 				},
-			});/*
-			.success(function(data){
-				if ($scope.files && $scope.files.length) {
-					console.log($scope.files);
-		            Upload.upload({
-		                url: '/image/upload',
-		                data: {
-		                	id:data.id,
-		                    files : $scope.files
-		                },
-		            }).then(function (response) {
-		            	console.log(response);
-		            });
-		        }   
-		    });	*/
+			});
 	    }
     }
     $('input[type=file]').val("");

@@ -1,5 +1,6 @@
 //инициализируем автокомплит
-jQuery(document).ready(function($) {	
+jQuery(document).ready(function($) {
+	alert("AAA");
 	$( ".input-autocompliete" ).autocomplete({
 	    source: availableTags,
 	    select: function( event, ui ){
@@ -156,4 +157,5 @@ jQuery(document).ready(function($) {
 			dataSearch();
 		}
 	});
+
 });
