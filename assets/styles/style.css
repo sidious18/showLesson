@@ -62,10 +62,14 @@
 	padding: 1%;
 	top:2%;
 }
-.loadJson
-{
-	display: none;
+
+.news-box{
+	width:90%;
+	background:#fff;
+	margin:1% auto;
+	padding: 1%;
 }
+
 .marker-title-input
 {
 	overflow: visible;

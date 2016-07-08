@@ -30,13 +30,12 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
-  'js/dependencies/angular.min.js',
-  'js/dependencies/angular-route.min.js',
-  'js/dependencies/jquery.min.js',
-  'js/dependencies/**/*.js',
-  'js/libs/*.js',
-  'js/scripts/map.js',
-  'js/scripts/sockets.js',
+  'js/dependencies/*.js',
+  'js/angular_libs/*.js',
+  'js/jquery_libs/*.js',
+  'js/custom_libs/*.js',
+  'js/map.js',
+  'js/angular_scripts/**/*.js',
   'js/scripts/*.js'
   // All of the rest of your client-side js files
   // will be injected here in no particular order.

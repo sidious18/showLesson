@@ -1,0 +1,15 @@
+<div ng-app="bezoMainMap" data-ng-controller="bezoMarkerSet" ng-init="socketInit()">
+  <div ng-view></div>
+
+  <div>
+    <div class="google-map-container">
+
+      <%- partial ('_header.ejs') %>
+
+    <div id="googleMap"></div>
+  </div>  
+</div>
+  
+  <%- partial ('_send_marker.ejs') %>
+
+</div>

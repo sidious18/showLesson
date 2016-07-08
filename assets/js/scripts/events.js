@@ -35,42 +35,8 @@ jQuery(document).ready(function($) {
 			reader.readAsArrayBuffer(files[i].slice(0, 128 * 1024));
 		}
 	});
-	$(".marker-holder, .close-marker").click(function(event) {
-		event.preventDefault();
-		event.stopPropagation();
-		$(".marker-holder").hide();
-		$(".carousel li").removeClass('active');
-		$(".carousel li:nth-child(1)").addClass('active');
-	});
-	$(".close-marker-send").click(function(event) {
-		event.preventDefault();
-		event.stopPropagation();
-		$(".send-marker-holder").hide();
-	});
-	$(".marker-holder div").click(function(e) {
-		e.preventDefault();
-        e.stopPropagation();
-  	 });
-	$(".send-marker-holder div, #send-marker div").click(function(e) {
-        e.stopPropagation();
-  	});
-  	$(".cancel-info, .send-marker-holder, #send-marker").click(function(event){
-  		clearSendMarker()
-  	});
-  	$(".cancel-info, .send-marker-holder").click(function(event){
-  		clearSendMarker()
-  	});
 });
-function clearSendMarker(event){
-	$(".title-input").val("");
-  	$(".place-input").val("");
-  	$(".xcoord-input").val("");
-  	$(".ycoord-input").val("");
-  	$(".pictures-input").val("");
-  	$(".description-input").val("");
-  	$(".pictures-input").val("");
-  	$("#send-marker").modal("hide");
-}
+
 function setToday (year,month,day,hour,minute,second){
 	var today = new Date();
 	$(year).val(today.getFullYear());
@@ -207,37 +173,3 @@ function initializeCheckDate(year,month,day,hour,minute,second){
 		checkDate.checkMinuteAndSecond(second);
 	});
 }
-
-//Фильтр в таблице
-(function(document) {
-	'use strict';
-	var LightTableFilter = (function(Arr) {
-		var _input;
-		function _onInputEvent(e) {
-			_input = e.target;
-			var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-			Arr.forEach.call(tables, function(table) {
-				Arr.forEach.call(table.tBodies, function(tbody) {
-					Arr.forEach.call(tbody.rows, _filter);
-				});
-			});
-		}
-		function _filter(row) {
-			var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
-			row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-		}
-		return {
-			init: function() {
-				var inputs = document.getElementsByClassName('light-table-filter');
-				Arr.forEach.call(inputs, function(input) {
-					input.oninput = _onInputEvent;
-				});
-			}
-		};
-	})(Array.prototype);
-	document.addEventListener('readystatechange', function() {
-		if (document.readyState === 'complete') {
-			LightTableFilter.init();
-		}
-	});
-})(document);
