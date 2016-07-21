@@ -18,15 +18,13 @@ function initFilter(){
 		return {
 			init: function() {
 				var inputs = document.getElementsByClassName('light-table-filter');
+				console.log("HELLOOOOO");
+				console.log(inputs);
 				Arr.forEach.call(inputs, function(input) {
 					input.oninput = _onInputEvent;
 				});
 			}
 		};
 	})(Array.prototype);
-	document.addEventListener('readystatechange', function() {
-		if (document.readyState === 'complete') {
-			LightTableFilter.init();
-		}
-	});
+	LightTableFilter.init();
 }

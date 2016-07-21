@@ -51,7 +51,7 @@ module.exports = {
 				}
 	    	}
 	    	else{
-	    		console.log(err);	
+	    		res.send(err);
 	    	}
 	    }
 	})

@@ -1,51 +1,49 @@
-<div class="modal fade" id="sort-holder" ng-controller="bezoMarkerSort" ng-init='initSort()'>
-	<div class="modal-dialog sort-holder">
-		<div class="show-select">
-			<h4>Типы отображаемых маркеров:</h4>
-			<div>
-				<input type="checkbox" id="crash">
-				<label for="crash">Происшествия</label>
+<div class="modal-dialog sort-holder" ng-controller="bezoMarkerSort" ng-init='initSort()'>
+	<div class="show-select">
+		<h4>Типы отображаемых маркеров:</h4>
+		<div>
+			<input type="checkbox" id="crash">
+			<label for="crash">Происшествия</label>
+		</div>
+		<div>
+			<input type="checkbox" id="event"/>
+			<label for="event">События</label>
+		</div>
+		<div>
+			<input type="checkbox" id="memory">
+			<label for="memory">Воспоминания</label>
+		</div>
+	</div>
+	<div class="date-select">
+		<div class="search-date-input">
+			<h4>Введите период отображаемых маркеров:</h4>
+			<div class="search-date-box">		
+				<div class="col-xs-2"><input type="text" class="from-year"></div>
+				<div class="col-xs-2"><input type="text" class="from-month"></div>
+				<div class="col-xs-2"><input type="text" class="from-day"></div>
+				<div class="col-xs-2"><input type="text" class="from-hour"></div>
+				<div class="col-xs-2"><input type="text" class="from-minute"></div>
+				<div class="col-xs-2"><input type="text" class="from-second"></div>
 			</div>
-			<div>
-				<input type="checkbox" id="event"/>
-				<label for="event">События</label>
+			
+			<div class="search-date-box"> 		
+				<div class="col-xs-2"><input type="text" class="to-year"></div>
+				<div class="col-xs-2"><input type="text" class="to-month"></div>
+				<div class="col-xs-2"><input type="text" class="to-day"></div>
+				<div class="col-xs-2"><input type="text" class="to-hour"></div>
+				<div class="col-xs-2"><input type="text" class="to-minute"></div>
+				<div class="col-xs-2"><input type="text" class="to-second"></div>
 			</div>
-			<div>
-				<input type="checkbox" id="memory">
-				<label for="memory">Воспоминания</label>
-			</div>
-		</div>
-		<div class="date-select">
-			<div class="search-date-input">
-				<h4>Введите период отображаемых маркеров:</h4>
-				<div class="search-date-box">		
-					<div class="col-xs-2"><input type="text" class="from-year"></div>
-					<div class="col-xs-2"><input type="text" class="from-month"></div>
-					<div class="col-xs-2"><input type="text" class="from-day"></div>
-					<div class="col-xs-2"><input type="text" class="from-hour"></div>
-					<div class="col-xs-2"><input type="text" class="from-minute"></div>
-					<div class="col-xs-2"><input type="text" class="from-second"></div>
-				</div>
-				
-				<div class="search-date-box"> 		
-					<div class="col-xs-2"><input type="text" class="to-year"></div>
-					<div class="col-xs-2"><input type="text" class="to-month"></div>
-					<div class="col-xs-2"><input type="text" class="to-day"></div>
-					<div class="col-xs-2"><input type="text" class="to-hour"></div>
-					<div class="col-xs-2"><input type="text" class="to-minute"></div>
-					<div class="col-xs-2"><input type="text" class="to-second"></div>
-				</div>
-				<input type="checkbox" id="real-time">
-				<label for="real-time">Показывать новости в реальном времени</label>
-			</div>	
-		</div>
-		<div class="autocompliete">
-			<h4>Выберите адрес маркера:</h4>
-			<input type="text" class="input-autocompliete">
-		</div>
-	    <div class="search-buttons">
-			<input type="button" value="Поиск" class="search-date btn btn-success">
-			<input type="button" class="reset-all btn btn-danger" value="Сброс">
-		</div>
+			<input type="checkbox" id="real-time">
+			<label for="real-time">Показывать новости в реальном времени</label>
+		</div>	
+	</div>
+	<div class="autocompliete">
+		<h4>Выберите адрес маркера:</h4>
+		<input type="text" class="input-autocompliete">
+	</div>
+    <div class="search-buttons">
+		<input type="button" value="Поиск" class="search-date btn btn-success">
+		<input type="button" class="reset-all btn btn-danger" value="Сброс">
 	</div>
 </div>

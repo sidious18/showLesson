@@ -39,7 +39,11 @@ module.exports = {
   	},
   	img:{
   		type:"array"
-  	}
+  	},
+    creator:{
+      model:'user',
+      required:true
+    }
   }
-};
+}
 

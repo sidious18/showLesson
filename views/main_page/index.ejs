@@ -1,15 +1,16 @@
-<div ng-app="bezoMainMap" data-ng-controller="bezoMarkerSet" ng-init="socketInit()">
-  <div ng-view></div>
-
-  <div>
-    <div class="google-map-container">
-
-      <%- partial ('_header.ejs') %>
-
-    <div id="googleMap"></div>
-  </div>  
-</div>
-  
-  <%- partial ('_send_marker.ejs') %>
-
-</div>
+<% if (session.authenticated) { %>
+	<input type="hidden" name="_csrf" value="<%= _csrf %>" class="csrf">
+	<div ng-app="bezoMainMap" data-ng-controller="bezoMarkerSet" ng-init="socketInit()">
+	  	<div ng-view>
+	  	</div>
+	    <div class="google-map-container">
+	      <%- partial ('_header.ejs') %>
+		    <div id="googleMap">	
+	   		</div>
+	  	</div>  
+	  <%- partial ('_send_marker.ejs') %>
+	</div>
+<% } %> 
+<% if (!session.authenticated) { %>
+	 <%- partial ('../login/index.ejs') %>
+<% } %>

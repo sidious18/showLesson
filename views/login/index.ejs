@@ -1,0 +1,48 @@
+<div class="user-login">
+
+	<div class="form-signin">
+
+		<h2 class="form-signin-heading">Sign In</h2>
+
+		<input type="text" class="form-control login-user-name" placeholder="Email Address" name="email">
+
+		<input type="password" class="form-control login-user-password" placeholder="Password" name="password">
+
+		<input type="hidden" name="_csrf" value="<%= _csrf %>" class="csrf">
+
+		<div class="login-bottom-block">
+
+			<div class="btn btn-lg btn-primary login-account"> Sign-in </div>
+		
+			<a class="need-registration">Need registration?</a>
+
+		</div>
+
+	</div>
+
+	<div class="form-create-user">
+
+		<h2 class="form-signin-heading">Create an account</h2>
+
+		<input type="text" class="form-control create-user-name" placeholder="Name" name="name">
+
+		<input type="text" class="form-control create-user-email" placeholder="Email Address" name="email">
+
+		<input type="password" class="form-control create-user-password" placeholder="Password" name="password">
+
+		<input type="password" class="form-control create-user-confirmation" placeholder="Confirm password" name="confirmation">
+
+		<input type="hidden" name="_csrf" value="<%= _csrf %>" class="csrf">
+
+		<div class="login-bottom-block">
+
+			<input type="submit" class="btn btn-lg btn-primary create-account" value="Sign-in">
+			
+			<a class="have-account">Already have an account?</a>
+
+		</div>
+
+	</div>
+	
+
+</div>

@@ -36,6 +36,7 @@ var jsFilesToInject = [
   'js/custom_libs/*.js',
   'js/map.js',
   'js/angular_scripts/**/*.js',
+  'js/angular_scripts/**/**/*.js',
   'js/scripts/*.js'
   // All of the rest of your client-side js files
   // will be injected here in no particular order.

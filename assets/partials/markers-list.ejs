@@ -1,0 +1,23 @@
+<table class="table table-hover markers-feed" ng-show="checkActiveTab(3)" ng-controller="bezoMarkerSort" ng-init='initSort()'>
+	<thead>
+		<tr>
+			<th class="news-title" ng-click="newsOrder('title')">Заголовок</th>
+			<th class="news-type" ng-click="newsOrder('type')">Тип</th>
+			<th class="news-adress" ng-click="newsOrder('place')">Адрес</th>
+			<th class="news-date" ng-click="newsOrder('date')">Дата</th>
+			<th class="news-xcoord" ng-click="newsOrder('xCoord')">Широта</th>
+			<th class="news-ycoord" ng-click="newsOrder('yCoord')">Долгота</th>
+	</tr>
+	</thead>
+		<!-- 
+	<tr ng-repeat="marker in markers | orderBy:orderer" ng-class="marker.markerType" ng-attr-id="{{marker.markerID}}" ng-show="marker.visible" ng-click="markerLink(marker.markerID)">
+	-->
+	<tr ng-repeat="marker in myMarkers | orderBy:orderer" ng-class="marker.markerType" ng-attr-id="{{marker.id}}">
+		<td class="news-title">{{marker.title}}</td>
+		<td class="news-type">{{marker.type}}</td>
+		<td class="news-adress">{{marker.place}}</td>
+		<td class="news-date">{{marker.date}}</td>
+		<td class="news-xcoord">{{marker.xCoord}}</td>
+		<td class="news-ycoord">{{marker.yCoord}}</td>	
+	</tr>
+</table>

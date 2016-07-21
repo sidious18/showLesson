@@ -5,6 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+
 module.exports = {
 	'new': function(req, res){
 		res.locals.flash = _.clone(req.session.flash);
@@ -23,17 +24,23 @@ module.exports = {
 				description:req.body.description,
 				date:req.body.date,
 				type:req.body.type,
-				img:[]
+				img:[],
+				creator:req.session.User.id
 			}, 
 			function markerCreate(err, marker){
+				if(err){
+					res.status(500).send(err);
+					return;
+				}
 				var dirImage = '../../assets/markers/marker'+marker.id+'/images';
 				var imagesList = [];
 				var fs = require('fs');
 				fs.mkdir(dirImage, 0744, function(err) {
 				    if (err) {
+				    	var ifFirst = true;
 				    	if(err.code == "ENOENT"){
-							var ifFirst = true;
-				    		for(i=0; i<=4; i++){	     			
+							
+				    		for(i=0; i<=4; i++){	    			
 							    req.file('files'+"["+i+"]").upload({dirname: dirImage}, function (err, files) {
 								   	if(files[0] != undefined){
 										if(ifFirst){
@@ -46,7 +53,7 @@ module.exports = {
 											    yCoord: marker.yCoord,
 											    date: marker.date,
 											    type: marker.type
-											 });  
+											}); 
 										}
 										marker.img.push('/markers/marker'+marker.id+'/images/' + files[0].fd.split('/')[files[0].fd.split('/').length-1]);
 										
@@ -58,14 +65,12 @@ module.exports = {
 										    }
 										});
 									}
-									if (err)
-									    return res.serverError(err);
-									return res.ok();
+									if (err)  return res.serverError(err);
 								});
 							}
 				    	}
 				    	else{
-				    		console.log(err);	
+				    		res.status(500).send(err);
 				    	}
 				    }
 				});

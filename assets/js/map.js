@@ -36,7 +36,7 @@ function initialize() {
     $("#send-marker").modal();
   });
 }
-function addMarker(xCoord,yCoord,id,title,type,date,place,ifFirst,visibility){
+function addMarker(xCoord,yCoord,id,title,type,date,place,visibility){
 	//Инициализируем положение маркера
   var myCenter=new google.maps.LatLng(xCoord,yCoord);
   //Инициализируем всплывающий тайтл

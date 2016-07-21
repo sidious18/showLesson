@@ -357,3 +357,65 @@
 	background:url(../images/uploading.gif) no-repeat;
 	background-position: center;
 }
+.error-notification{
+	animation: notification-message 0.2s linear 0s 1;
+	position:fixed;
+	width:50%;
+	background-color:#FDC9BE;
+	border:1px solid #D49488;
+	border-radius: 3px;
+	padding: 10px;
+	left:25%;
+	top:5%;
+	z-index: 9999;
+}
+@keyframes notification-message{
+	from {top:-10%;}
+    to {top:5%;}
+}
+
+.user-login {
+	width:300px;
+	margin:auto;
+	border:1px solid #ccc;
+	padding:10px;
+	border-radius:5px;
+	text-align: center;
+	margin-top: 20px;
+}
+.user-login input{
+	margin-bottom: 10px;
+}
+
+.user-login h2{
+	margin:15px 0px;
+}
+
+.user-login a{
+	cursor: pointer;
+}
+
+.form-create-user{
+	display: none;
+}
+
+.login-bottom-block{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.news-box-menu{
+	padding-left: 0px;
+}
+.news-box-menu li{
+	display: inline-block;
+	padding:5px 10px;
+	border:1px solid #ccc;
+	background: #f6f6f6;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.news-box-menu li.active{
+	background-color: #007fff;
+	color:white;
+}
