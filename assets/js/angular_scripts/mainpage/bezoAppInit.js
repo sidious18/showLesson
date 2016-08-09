@@ -1,6 +1,24 @@
 var bezoMainMap = angular.module('bezoMainMap',[initialize,'ngFileUpload','ngRoute','luegg.directives']);
-var URL;
-var availableTags = new Array();
+
+bezoMainMap.service('sharedProperties', function () {
+        var availableTags = {};
+        availableTags.places = [];
+        availableTags.id = [];
+        return {
+            getMarkerPlaces: function () {
+                return availableTags.places;
+            },
+            setMarkerPlaces: function(value) {
+                availableTags.places.push(value);
+            },
+            getMarkerID: function(){
+                return availableTags.id;
+            },
+            setMarkerID: function(value){
+                availableTags.id.push(value);
+            }
+        };
+    });
 
 bezoMainMap.directive("sortMarker", function() {
     return {
@@ -65,6 +83,9 @@ bezoMainMap.config(['$routeProvider',
       })
       .when('/markerslist', {
         templateUrl: '/partials/markers-list.ejs'
+      })
+      .when('/userlist', {
+        templateUrl: '/partials/user-list.ejs'
       })
       .otherwise({
         redirectTo: function (routeParams, path, search) {

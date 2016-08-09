@@ -7,6 +7,8 @@
 
 module.exports = {
 
+  schema:true,
+
   attributes: {
   	name:{
   		type:'string',
@@ -31,6 +33,12 @@ module.exports = {
     markers:{
       collection: 'marker',
       via: 'creator'
+    },
+    mySubscribers:{
+      type:'array'
+    },
+    subscribed:{
+      type:'array'
     }
   },
   beforeCreate: function(values, next){

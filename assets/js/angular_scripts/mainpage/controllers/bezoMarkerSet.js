@@ -1,4 +1,4 @@
-bezoMainMap.controller('bezoMarkerSet',["$scope", "$http", function($scope,$http){
+bezoMainMap.controller('bezoMarkerSet',["$scope", "$http", 'sharedProperties', function($scope,$http,sharedProperties){
 	$scope.socketInit = function(){
 		io.socket.on('connect', function(){
 		   io.socket.get('/marker/getMarker', function(data){
@@ -6,13 +6,17 @@ bezoMainMap.controller('bezoMarkerSet',["$scope", "$http", function($scope,$http
 		   	$(".news-date").click();
 		   	for(var i=0; i < data.length; i++){
 		   		addMarker(data[i].xCoord,data[i].yCoord,data[i].id,data[i].title,data[i].type,data[i].date,data[i].place,true);
-		   		availableTags.push(data[i].place);
+		   		sharedProperties.setMarkerPlaces(data[i].place);
+		   		sharedProperties.setMarkerID(data[i].id);
+		   		console.log(sharedProperties.getMarkerID()[i]);
+		   		console.log(sharedProperties.getMarkerPlaces()[i]);
 		   	}
 		   });
 		   io.socket.on('marker', function(marker){
 		   	console.log(marker);
 		     addMarker(marker.data.xCoord,marker.data.yCoord,marker.data.id,marker.data.title,marker.data.type,marker.data.date,marker.data.place,true);
-		     availableTags.push(marker.data.place);
+		     sharedProperties.setMarkerPlaces(data[i].place);
+		     sharedProperties.setMarkerId(data[i].id);
 		     $scope.markers.push(marker);
 		   });
 		});
@@ -42,9 +46,9 @@ bezoMainMap.controller('bezoMarkerSet',["$scope", "$http", function($scope,$http
 	}
 
 	$scope.newsOrder = function(orderer){
-		console.log("AAA");
 		$scope.orderer = orderer;
 	}
+
 	$scope.markerLink = function(message){
 		$("#news-holder").click();
 		$('#news-holder').on('hidden.bs.modal', function () {

@@ -1,25 +1,21 @@
-bezoMainMap.controller('bezoMarkerSort',['$scope', '$http', '$compile', '$routeParams', function($scope,$http,$compile,$routeParams){
+bezoMainMap.controller('bezoMarkerSort',['$scope', '$http', '$compile', '$routeParams','sharedProperties', function($scope,$http,$compile,$routeParams,sharedProperties){
 	$scope.initSort = function(){
-		$("#sort-holder").modal('show');
-		$('#sort-holder').on('hidden.bs.modal', function () {
-		    document.location = "/#";
-		});
-
 		$( ".input-autocompliete" ).autocomplete({
-		    source: availableTags,
+		    source: sharedProperties.getMarkerPlaces(),
 		    select: function( event, ui ){
+
 		      	for(i=0;i<=allMarkers.length-1;i++){
 		      		if(ui.item.value==allMarkers[i].markerPlace){
 		      			var currentMarker = allMarkers[i];
-		      			$("#sort-holder").modal("hide");
-		      			$("#sort-holder").on('hidden.bs.modal', currentMarker, function () {
+		      			$("#news-holder").modal("hide");
+		      			$("#news-holder").on('hidden.bs.modal', currentMarker, function () {
 			     			document.location = "/#/"+currentMarker.markerID;
 		      			});
 		      			break;
 		      		}
 		     	}
 		    }
-		});
+		})
 		//Очищаем Автозаполнение на клик
 		$(".input-autocompliete").click(function(){
 			$(".input-autocompliete").val("");
@@ -30,10 +26,10 @@ bezoMainMap.controller('bezoMarkerSort',['$scope', '$http', '$compile', '$routeP
 				if(allMarkers[i].dateVisible){
 					if(allMarkers[i].markerType==event&&checker.length==0){
 						allMarkers[i].setVisible(false);
-						availableTags[i]="";
+						sharedProperties.getMarkerPlaces()[i]="";
 						allMarkers[i].visibleEvent=false;
 						$( ".input-autocompliete" ).autocomplete({
-			      			source: availableTags,
+			      			source: sharedProperties.getMarkerPlaces(),
 			      			messages: {
 						        noResults: '',
 						        results: function() {}
@@ -44,7 +40,7 @@ bezoMainMap.controller('bezoMarkerSort',['$scope', '$http', '$compile', '$routeP
 					}
 					else if (allMarkers[i].markerType==event){
 						allMarkers[i].setVisible(true);
-						availableTags[i] = allMarkers[i].markerPlace;
+						sharedProperties.getMarkerPlaces()[i] = allMarkers[i].markerPlace;
 						allMarkers[i].visibleEvent=true;
 						//показываем в ленте описание маркера
 						$("#"+allMarkers[i].markerID).removeClass('ng-hide');
@@ -53,7 +49,7 @@ bezoMainMap.controller('bezoMarkerSort',['$scope', '$http', '$compile', '$routeP
 				}
 			}
 			$( ".input-autocompliete" ).autocomplete({
-				source: availableTags
+				source: sharedProperties.getMarkerPlaces()
 			})
 		}
 		//Делаем все чекбоксы включенными
@@ -95,7 +91,7 @@ bezoMainMap.controller('bezoMarkerSort',['$scope', '$http', '$compile', '$routeP
 					if(allMarkers[i].markerDate>from && allMarkers[i].markerDate<to){
 						allMarkers[i].setVisible(true);
 						allMarkers[i].dateVisible = true;
-						availableTags[i] = allMarkers[i].markerPlace;
+						sharedProperties.getMarkerPlaces()[i] = allMarkers[i].markerPlace;
 						//показываем в ленте описание маркера
 						$("#"+allMarkers[i].markerID).removeClass('ng-hide');
 						$("#"+allMarkers[i].markerID).removeClass('hidden');
@@ -104,14 +100,14 @@ bezoMainMap.controller('bezoMarkerSort',['$scope', '$http', '$compile', '$routeP
 					{
 						allMarkers[i].setVisible(false);
 						allMarkers[i].dateVisible = false;
-						availableTags[i]="";
+						sharedProperties.getMarkerPlaces()[i]="";
 						//скрываем в ленте описание маркера
 			      		$("#"+allMarkers[i].markerID).addClass('hidden');
 					}
 				}			
 			}
 			$( ".input-autocompliete" ).autocomplete({
-			  	source: availableTags
+			  	source: sharedProperties.getMarkerPlaces()
 			});
 		}
 
@@ -123,17 +119,16 @@ bezoMainMap.controller('bezoMarkerSort',['$scope', '$http', '$compile', '$routeP
 			uncheckSortCheckbox();
 			setPast(".from-year",".from-month",".from-day",".from-hour",".from-minute",".from-second");
 			setFuture(".to-year",".to-month",".to-day",".to-hour",".to-minute",".to-second");
-			availableTags=new Array();
 			for(i=0;i<=allMarkers.length-1;i++){
 				allMarkers[i].setVisible(true);
 			    allMarkers[i].dateVisible = true;
 			    allMarkers[i].visibleEvent = true;
 			   	allMarkers[i].showInfo = true;
 			    allInfos[i].close();
-			    availableTags.push(allMarkers[i].markerPlace);
+			    sharedProperties.setMarkerPlaces(allMarkers[i].markerPlace)
 			}
 			$( ".input-autocompliete" ).autocomplete({
-			    source: availableTags
+			    source: sharedProperties.getMarkerPlaces()
 			})
 		});
 		//Скрыть форму сортировки
@@ -141,9 +136,7 @@ bezoMainMap.controller('bezoMarkerSort',['$scope', '$http', '$compile', '$routeP
 			$("#sort-marker").modal("hide");
 		});
 		function uncheckSortCheckbox(){
-			console.log($(".show-select input"))
 			for (i=0; i < $(".show-select input").length; i++){
-				console.log($(".show-select input").length);
 				$('.show-select input')[i].checked = true;
 			}
 			if ($("#real-time").is(":checked")){
